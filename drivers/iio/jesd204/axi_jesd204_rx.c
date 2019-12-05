@@ -488,7 +488,7 @@ static void axi_jesd204_rx_watchdog(struct work_struct *work)
 		return;
 
 	link_status = readl_relaxed(jesd->base + JESD204_RX_REG_LINK_STATUS);
-	if (link_status == 3) {
+/* sjk  if (link_status == 3) {
 		for (i = 0; i < jesd->num_lanes; i++)
 			restart |= axi_jesd204_rx_check_lane_status(jesd, i);
 
@@ -498,7 +498,7 @@ static void axi_jesd204_rx_watchdog(struct work_struct *work)
 			writel_relaxed(0x0, jesd->base + JESD204_RX_REG_LINK_DISABLE);
 		}
 	}
-
+sjk */
 	schedule_delayed_work(&jesd->watchdog_work, HZ);
 }
 
